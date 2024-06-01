@@ -3,7 +3,7 @@
 ## About
 This pipeline will extract data from a csv file using `python`, load it into a staging table in `snowflake` and apply some transformations using `dbt`. The whole process will be orchestrated by `prefect`.
 
-This is an updated version of a previous ETL project. Reason for the update can be read [here](link).
+This is an updated version of a previous ETL project. The reason for the update can be read [here](https://github.com/krtmlry/sf_product_sales/blob/main/reason.md).
 
 The postgres version can be seen [here](https://github.com/krtmlry/prefect-dbt-postgres).
 
