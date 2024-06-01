@@ -1,6 +1,6 @@
 # Reason for updating the project
 
-This old etl pipeline [project]() of mine was my first time creating an end-to-end etl pipeline and I was only following a video tutorial.
+This old etl pipeline [project](https://github.com/krtmlry/product_sales_2019) of mine was my first time creating an end-to-end etl pipeline and I was only following a video tutorial.
 
 There are some mistakes on that project particularly on the data modelling part.
 
