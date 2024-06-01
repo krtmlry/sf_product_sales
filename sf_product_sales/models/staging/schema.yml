@@ -1,0 +1,69 @@
+version: 2
+
+sources:
+  - name: raw_source
+    description: "Raw landing zone of product sales"
+    database: PRODUCT_SALES_DB
+    schema: PRODUCT_SALES
+    tables:
+      - name: RAW_SALES_LANDING
+        columns:
+          - name: "Order ID"
+          - name: "Product"
+          - name: "Price Each"
+          - name: "Quantity Ordered"
+          - name: "Order Date"
+          - name: "Purchase Address"
+          - name: "Store"
+          - name: "Payment Method"
+
+models:
+  - name: stg_product_sales
+    description: "stg view for product sales"
+    columns:
+      - name: order_id
+      - name: product
+      - name: price_each
+      - name: qty_ordered
+      - name: total_price
+      - name: order_date
+      - name: purchase_address
+      - name: store
+      - name: payment_method
+
+  - name: t_cast_types
+    description: "transform model for type casting"
+    columns:
+      - name: order_id
+      - name: product
+      - name: price_each
+      - name: qty_ordered
+      - name: order_date
+      - name: purchase_address
+      - name: store
+      - name: payment_method
+
+  - name: t_rm_nulls_dups
+    description: "transform model for removing nulls and duplicates"
+    columns:
+      - name: "Order ID"
+      - name: "Product"
+      - name: "Price Each"
+      - name: "Quantity Ordered"
+      - name: "Order Date"
+      - name: "Purchase Address"
+      - name: "Store"
+      - name: "Payment Method"
+
+  - name: stg_fact_sales
+    description: "staging fact sales table"
+    columns:
+      - name: order_id
+      - name: product
+      - name: price_each
+      - name: qty_ordered
+      - name: total_price
+      - name: order_date
+      - name: purchase_address
+      - name: store
+      - name: payment_method

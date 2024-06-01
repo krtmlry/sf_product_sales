@@ -1,0 +1,167 @@
+
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Dimension table for customer details"
+    columns:
+      - name: customer_sk_id
+        description: "dim_customers surrogate primary key"
+        data_tests:
+          - unique
+          - not_null
+      - name: purchase_address
+        data_tests:
+          - not_null
+      - name: city
+        data_tests:
+          - not_null
+
+  - name: dim_order_dates
+    description: "Dimension table for order dates"
+    columns:
+      - name: orderdate_sk_id
+        data_tests:
+          - unique
+          - not_null
+      - name: order_time_stamp
+        data_tests:
+          - unique
+          - not_null
+      - name: year
+        data_tests:
+          - not_null
+      - name: month
+        data_tests:
+          - not_null
+      - name: day
+        data_tests:
+          - not_null
+      - name: dow
+        data_tests:
+          - not_null
+      - name: hour
+        data_tests:
+          - not_null
+      - name: minute
+        data_tests:
+          - not_null
+      - name: day_of_week
+        data_tests:
+          - not_null
+
+  - name: dim_payment_methods
+    description: "Dimension table for payment methods"
+    columns:
+      - name: payment_method_id
+        data_tests:
+          - unique
+          - not_null
+      - name: payment_method
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: "Dimension table for products"
+    columns:
+      - name: product_id
+        data_tests:
+          - unique
+          - not_null
+      - name: product
+        data_tests:
+          - unique
+          - not_null
+      - name: price_each
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_stores
+    description: "Dimension table for stores"
+    columns:
+      - name: store_id
+        data_tests:
+          - unique
+          - not_null
+      - name: store
+        data_tests:
+          - unique
+          - not_null
+
+  - name: final_fact_sales
+    description: "fact table for product sales"
+    columns:
+      - name: order_sk_id
+        data_tests:
+          - unique
+          - not_null
+      - name: order_id
+        data_tests:
+          - not_null
+      - name: product_id
+        data_tests:
+          - not_null
+      - name: price_each
+        data_tests:
+          - not_null
+      - name: qty_ordered
+        data_tests:
+          - not_null
+      - name: total_price
+        data_tests:
+          - not_null
+      - name: orderdate_id
+        data_tests:
+          - not_null
+      - name: purchase_address_id
+        data_tests:
+          - not_null
+      - name: city
+        data_tests:
+          - not_null
+      - name: store_id
+        data_tests:
+          - not_null
+      - name: payment_method_id
+        data_tests:
+          - not_null
+
+
+  - name: mart_product_sales
+    description: "view table for fact_product_sales"
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null
+      - name: product
+        data_tests:
+          - not_null
+      - name: price_each
+        data_tests:
+          - not_null
+      - name: qty_ordered
+        data_tests:
+          - not_null
+      - name: total_price
+        data_tests:
+          - not_null
+      - name: order_time_stamp
+        data_tests:
+          - not_null
+      - name: day_of_week
+        data_tests:
+          - not_null
+      - name: purchase_address
+        data_tests:
+          - not_null
+      - name: city
+        data_tests:
+          - not_null
+      - name: store
+        data_tests:
+          - not_null
+      - name: payment_method
+        data_tests:
+          - not_null
