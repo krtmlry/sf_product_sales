@@ -32,6 +32,6 @@ Process overview:
 
 ## Data model diagram
 
-![data-model](https://github.com/krtmlry/sf_product_sales/blob/main/img/data-model.png)
+![data-model](https://github.com/krtmlry/sf_product_sales/blob/main/img/datamodeldiagram_new.png)
 
 ----
