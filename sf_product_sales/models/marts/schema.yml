@@ -6,7 +6,12 @@ models:
     description: "Dimension table for customer details"
     columns:
       - name: customer_sk_id
-        description: "dim_customers surrogate primary key"
+        description: "dim_customers surrogate key"
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "dim_customers primary key"
         data_tests:
           - unique
           - not_null
@@ -53,6 +58,10 @@ models:
   - name: dim_payment_methods
     description: "Dimension table for payment methods"
     columns:
+      - name: pay_method_sk_id
+        data_tests:
+          - unique
+          - not_null
       - name: payment_method_id
         data_tests:
           - unique
@@ -65,6 +74,10 @@ models:
   - name: dim_products
     description: "Dimension table for products"
     columns:
+      - name: product_sk_id
+        data_tests:
+          - unique
+          - not_null
       - name: product_id
         data_tests:
           - unique
@@ -81,6 +94,10 @@ models:
   - name: dim_stores
     description: "Dimension table for stores"
     columns:
+      - name: store_sk_id
+        data_tests:
+          - unique
+          - not_null
       - name: store_id
         data_tests:
           - unique
@@ -100,10 +117,11 @@ models:
       - name: order_id
         data_tests:
           - not_null
-      - name: product_id
+      - name: customer_sk_id
         data_tests:
+          - unique
           - not_null
-      - name: price_each
+      - name: product_sk_id
         data_tests:
           - not_null
       - name: qty_ordered
@@ -112,27 +130,23 @@ models:
       - name: total_price
         data_tests:
           - not_null
-      - name: orderdate_id
+      - name: orderdate_sk_id
         data_tests:
           - not_null
-      - name: purchase_address_id
+      - name: store_sk_id
         data_tests:
           - not_null
-      - name: city
+      - name: pay_method_sk_id
         data_tests:
           - not_null
-      - name: store_id
-        data_tests:
-          - not_null
-      - name: payment_method_id
-        data_tests:
-          - not_null
-
 
   - name: mart_product_sales
     description: "view table for fact_product_sales"
     columns:
       - name: order_id
+        data_tests:
+          - not_null
+      - name: customer_id
         data_tests:
           - not_null
       - name: product
@@ -150,13 +164,25 @@ models:
       - name: order_time_stamp
         data_tests:
           - not_null
-      - name: day_of_week
+      - name: day_name
+        data_tests:
+          - not_null
+      - name: day_num_name
+        data_tests:
+          - not_null
+      - name: month_name
+        data_tests:
+          - not_null
+      - name: month_num
         data_tests:
           - not_null
       - name: purchase_address
         data_tests:
           - not_null
       - name: city
+        data_tests:
+          - not_null
+      - name: state_name
         data_tests:
           - not_null
       - name: store

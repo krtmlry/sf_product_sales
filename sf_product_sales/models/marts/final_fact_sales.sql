@@ -4,18 +4,15 @@ with final_fact_sales as (
 	select
 	a.order_sk_id,
 	a.order_id,
-	c.customer_sk_id as customer_id,
-	b.product_id,
-	b.price_each,
+	c.customer_sk_id,
+	b.product_sk_id,
 	a.qty_ordered,
-	a.total_price::numeric(10,2) as total_price,
-	f.orderdate_sk_id as orderdate_id,
-	c.customer_sk_id as purchase_address_id,
-	c.city,
-	d.store_id,
-	e.payment_method_id
+	(a.qty_ordered * b.price_each)::numeric(10,2) as total_price,
+	f.orderdate_sk_id,
+	d.store_sk_id,
+	e.pay_method_sk_id
 	
-	from {{ref('stg_fact_sales')}} as a
+	from {{ref('final_product_sales')}} as a
 	left join {{ref('dim_products')}} as b on a.product = b.product
 	left join {{ref('dim_customers')}} as c on a.purchase_address = c.purchase_address
 	left join {{ref('dim_stores')}} as d on a.store = d.store

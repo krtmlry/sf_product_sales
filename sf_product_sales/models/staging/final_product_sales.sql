@@ -1,12 +1,12 @@
 {{config(materialized='view')}}
 
-with stg_product_sales as (
+with final_product_sales as (
 	select
+		row_number() over(order by order_date asc) as order_sk_id,
 		order_id,
 		product,
 		price_each,
 		qty_ordered,
-		(price_each * qty_ordered)::numeric(10,2) as total_price,
 		order_date,
 		purchase_address,
 		store,
@@ -17,4 +17,4 @@ with stg_product_sales as (
 )
 
 select *
-from stg_product_sales
+from final_product_sales
